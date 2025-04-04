@@ -12,6 +12,16 @@ export default function Home() {
       <div className="network-grid"></div>
       <div className="gradient-bg"></div>
       
+      {/* Wave effect overlays */}
+      <div className="wave-container">
+        <svg className="wave wave-1" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path className="wave-path accent1-wave" d="M0,192L48,186.7C96,181,192,171,288,181.3C384,192,480,224,576,213.3C672,203,768,149,864,149.3C960,149,1056,203,1152,213.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <svg className="wave wave-2" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path className="wave-path accent2-wave" d="M0,256L48,240C96,224,192,192,288,176C384,160,480,160,576,181.3C672,203,768,245,864,245.3C960,245,1056,203,1152,186.7C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+      
       {/* Glow points */}
       <div className="glow-point" style={{ top: '30%', left: '20%' }}></div>
       <div className="glow-point" style={{ top: '60%', left: '50%' }}></div>
@@ -50,17 +60,17 @@ export default function Home() {
           <div className="absolute w-48 h-48 rounded-full bg-accent1/3 blur-[100px] animate-float-fast animated-float bottom-10 right-20 opacity-20"></div>
         </div>
         
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="mb-10">
+        <div className="w-full relative z-10 overflow-visible px-0">
+          <div className="w-full text-center overflow-visible">
+            <div className="mb-4 sm:mb-10 overflow-visible w-full">
               <HeroLogo />
             </div>
-            <p className="enhanced-subtitle text-3xl md:text-4xl xl:text-5xl max-w-4xl mx-auto text-fade-in" style={{ "--delay": "0.3s" } as React.CSSProperties}>
+            <p className="enhanced-subtitle text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl max-w-4xl mx-auto text-fade-in px-2" style={{ "--delay": "0.3s" } as React.CSSProperties}>
               DeRisked Digital Group owns and operates a group of regulated companies as well as blockchain and trading infrastructure companies to power the world's on-chain digital asset future.
             </p>
             <div className="ornamental-divider my-12 w-1/2 mx-auto"></div>
             <div className="max-w-4xl mx-auto">
-              <p className="refined-text text-xl md:text-2xl leading-relaxed mx-auto text-foreground/85 text-fade-in" style={{ "--delay": "0.5s" } as React.CSSProperties}>
+              <p className="refined-text text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mx-auto text-foreground/85 text-fade-in px-2" style={{ "--delay": "0.5s" } as React.CSSProperties}>
                 DDG brings together the best of Tier-1 regulatory licensing for trading and financial services with innovative, patented blockchain technology for netting, clearing and settlement. By aggregating liquidity providers and trading venues and front-to-back trading with real-time netting, clearing, and guaranteed settlement infrastructure, we provide regulated custodians, trading firms and trading technology platforms with the next generation seamless, risk-mitigated global ecosystem. Our network of regulated entities and tech-driven platforms empowers the digital asset economy with the lowest risk and maximum capital efficiency.
               </p>
             </div>

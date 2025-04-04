@@ -63,7 +63,7 @@ body {
 .bg-texture {
   background-image: 
     radial-gradient(hsl(var(--accent-1) / 0.08) 1px, transparent 1px),
-    radial-gradient(hsl(var(--accent-2) / 0.08) 1px, transparent 1px);
+                    radial-gradient(hsl(var(--accent-2) / 0.08) 1px, transparent 1px);
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
   opacity: 0.2;
@@ -148,25 +148,88 @@ body {
   width: 100%;
   height: 100%;
   z-index: -3;
-  background: radial-gradient(
-    circle at 50% 50%,
-    hsl(var(--background)),
-    hsl(var(--background)) 60%,
-    hsl(var(--accent-1) / 0.04) 90%,
-    hsl(var(--accent-2) / 0.06) 100%
-  );
-  animation: pulseGradient 25s ease-in-out infinite;
+  background: 
+    radial-gradient(circle at 15% 20%, hsl(var(--accent-1) / 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 85% 80%, hsl(var(--accent-2) / 0.15) 0%, transparent 35%),
+    radial-gradient(
+      circle at 50% 50%,
+      hsl(var(--background)),
+      hsl(var(--background)) 50%,
+      hsl(var(--accent-1) / 0.08) 80%,
+      hsl(var(--accent-2) / 0.1) 100%
+    );
+  animation: pulseGradient 30s ease-in-out infinite alternate;
+}
+
+.gradient-bg::before,
+.gradient-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gradient-bg::before {
+  background: 
+    radial-gradient(ellipse at 30% 40%, hsl(var(--accent-1) / 0.1) 0%, transparent 50%);
+  filter: blur(30px);
+  animation: rippleEffect1 15s ease-in-out infinite alternate;
+}
+
+.gradient-bg::after {
+  background: 
+    radial-gradient(ellipse at 70% 60%, hsl(var(--accent-2) / 0.1) 0%, transparent 50%);
+  filter: blur(30px);
+  animation: rippleEffect2 18s ease-in-out infinite alternate;
+}
+
+@keyframes rippleEffect1 {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.5) translateX(-5%) translateY(3%);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1) translateX(5%) translateY(-3%);
+    opacity: 0.2;
+  }
+}
+
+@keyframes rippleEffect2 {
+  0% {
+    transform: scale(1.2) translateX(2%) translateY(-2%);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(0.8) translateX(-2%) translateY(2%);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.2) translateX(2%) translateY(-2%);
+    opacity: 0.2;
+  }
 }
 
 @keyframes pulseGradient {
   0% {
     background-position: 0% 0%;
+    background-size: 100% 100%, 100% 100%, 100% 100%;
   }
   50% {
-    background-position: 100% 20%;
+    background-position: 5% 10%;
+    background-size: 120% 120%, 120% 120%, 120% 120%;
   }
   100% {
     background-position: 0% 0%;
+    background-size: 100% 100%, 100% 100%, 100% 100%;
   }
 }
 
@@ -272,9 +335,15 @@ body {
 }
 
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Enhanced floating animations */
@@ -1621,4 +1690,98 @@ body {
 .app-icon-card:hover .edge-glow {
   transform: scaleX(0.9);
   opacity: 1;
+}
+
+/* Add a new keyframe animation for the flowing gradient effect */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Create a class for the flowing gradient effect */
+.flowing-gradient {
+  background-size: 300% 100%;
+  background-image: linear-gradient(
+    to right, 
+    hsl(var(--accent-1) / 0.6), 
+    hsl(var(--accent-2) / 0.8), 
+    hsl(var(--accent-1) / 0.7),
+    hsl(var(--accent-2) / 0.6),
+    hsl(var(--accent-1) / 0.6)
+  );
+  animation: gradientFlow 12s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+/* Wave container and animations */
+.wave-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  min-height: 100px;
+  max-height: 150px;
+}
+
+.wave-1 {
+  opacity: 0.05;
+  animation: wave-animation-1 15s ease-in-out infinite alternate;
+}
+
+.wave-2 {
+  opacity: 0.04;
+  animation: wave-animation-2 18s ease-in-out infinite alternate;
+}
+
+@keyframes wave-animation-1 {
+  0% {
+    transform: translateX(-2%) scaleY(1);
+  }
+  50% {
+    transform: translateX(1%) scaleY(1.1);
+  }
+  100% {
+    transform: translateX(-1%) scaleY(0.9);
+  }
+}
+
+@keyframes wave-animation-2 {
+  0% {
+    transform: translateX(2%) scaleY(0.9);
+  }
+  50% {
+    transform: translateX(-1%) scaleY(1);
+  }
+  100% {
+    transform: translateX(1%) scaleY(1.1);
+  }
+}
+
+.accent1-wave {
+  fill: hsla(var(--accent-1), 0.15);
+  filter: blur(8px);
+}
+
+.accent2-wave {
+  fill: hsla(var(--accent-2), 0.15);
+  filter: blur(8px);
 } 
